@@ -22,9 +22,12 @@
   ==================================================*/
 
   module.exports = {
-    name: 'Template Project', // project name
-    token: null,              // null, or token symbol if project has a custom token
-    category: 'assets',       // allowed values as shown on DefiPulse: 'Derivatives', 'DEXes', 'Lending', 'Payments', 'Assets', 'Staking'
+    name: 'Kava', // project name
+    website: 'https://kava.io/',
+    category: 'lending',
+    category: 'assets',
+    category: 'staking',      // allowed values as shown on DefiPulse: 'Derivatives', 'DEXes', 'Lending', 'Payments', 'Assets'
+    token: 'KAVA',            // null, or token symbol if project has a custom token
     start: 1514764800,        // unix timestamp (utc 0) specifying when the project began, or where live data begins
     tvl                       // tvl adapter
   }

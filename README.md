@@ -144,7 +144,7 @@ Each project adapter needs to export the main run function, in addition to some 
 module.exports = {
   name: 'Template Project', // project name
   token: null,              // null, or token symbol if project has a custom token
-  category: 'assets',       // allowed values as shown on DefiPulse: 'derivatives', 'dexes', 'lending', 'payments', 'assets'
+  category: 'assets',       // allowed values as shown on DefiPulse: 'derivatives', 'dexes', 'lending', 'payments', 'assets', 'staking'
   start: 1514764800,        // unix timestamp (utc 0) specifying when the project began, or where live data begins
   tvl                       // tvl adapter
 }
@@ -173,11 +173,11 @@ While writing your adapter, you'll need to run the code to check for errors, che
 ## Historical CSV view
 After running the test suite, a historical CSV is generated containing all tracked tokens and their balances beginning the projects "start" date. You can use this folder to gain better insight into the output of your adapters and verify accuracy.
 
-| timestamp        | date           | block  | ETH  |
-| ------------- |:-------------:| -----:|-----:|
-| 1538006400      | Wed Sep 26 2018 20:00:00 | 6405884 | 22.64 |
-| 1549324800 | Mon Feb 04 2019 19:00:00     | 7175712 |  25452.34 |
-| 1554940800      | Wed Apr 10 2019 20:00:00   | 7543456   |   53152.81 |
+| timestamp  |           date           |   block |      ETH |
+|------------|:------------------------:|--------:|---------:|
+| 1538006400 | Wed Sep 26 2018 20:00:00 | 6405884 |    22.64 |
+| 1549324800 | Mon Feb 04 2019 19:00:00 | 7175712 | 25452.34 |
+| 1554940800 | Wed Apr 10 2019 20:00:00 | 7543456 | 53152.81 |
 
 Check the
 ```

@@ -128,6 +128,10 @@
     return POST(`/cdp/compound/${endpoint}`, options);
   }
 
+  async function kava(endpoint, options) {
+    return POST(`/cdp/kava/${endpoint}`, options);
+  }
+
   async function cdp(endpoint, options) {
     return POST(`/cdp/${endpoint}`, options);
   }
@@ -150,7 +154,11 @@
       compound: {
         tokens: (options) => compound('tokens', { ...options }),
         getAssetsLocked: (options) => compound('getAssetsLocked', { ...options, chunk: {param: 'targets', length: 1000, combine: 'balances'} })
-      }
+      },
+      kava: {
+        tokens: (options) => kava('tokens', { ...options }),
+        getAssetsLocked: (options) => kava('getAssetsLocked', { ...options, chunk: {param: 'targets', length: 1000, combine: 'balances'} })
+      },
     },
     util: {
       getLogs: (options) => util('getLogs', { ...options }),
