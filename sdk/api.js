@@ -8,6 +8,7 @@ const _ = require('underscore');
 const utility = require('./util');
 const term = require('terminal-kit').terminal;
 const Bottleneck = require('bottleneck');
+const kavaSDK = require("@kava-labs/javascript-sdk");
 
 /*==================================================
   Helper Methods
@@ -99,6 +100,11 @@ async function POST(endpoint, options) {
 
       return response.data;
     }
+    // else if (!ethReq) {
+    //   let client = new kavaSDK.KavaClient(Kava.KavaClient.);
+    //   supply = await client.getSupply()
+    //   // TODO: request or consider other POSTCosmos method
+    // }
   } catch (error) {
     throw error.response ? error.response.data : error;
   }
@@ -110,10 +116,6 @@ async function erc20(endpoint, options) {
 
 async function eth(endpoint, options) {
   return POST(`/eth/${endpoint}`, options);
-}
-
-async function cosmos(endpoint, options) {
-  return POST(`/cosmos/${endpoint}`, options);
 }
 
 async function util(endpoint, options) {
@@ -132,9 +134,9 @@ async function compound(endpoint, options) {
   return POST(`/cdp/compound/${endpoint}`, options);
 }
 
-async function kava(endpoint, options) {
-  return POST(`/cdp/kava/${endpoint}`, options);
-}
+// async function kava(endpoint, options) {
+//   return POST(`/cdp/kava/${endpoint}`, options, false);
+// }
 
 async function cdp(endpoint, options) {
   return POST(`/cdp/${endpoint}`, options);
@@ -194,6 +196,8 @@ module.exports = {
       })
     },
     kava: {
+      getBalance: (options) => kava('getBalance', options),
+      getBalances: (options) => kava('getBalances', options),
       tokens: (options) => kava('tokens', {
         ...options
       }),
@@ -243,13 +247,6 @@ module.exports = {
       ...options
     }),
     balanceOf: (options) => erc20('balanceOf', {
-      ...options
-    }),
-  },
-  cosmos: {
-    getBalance: (options) => cosmos('getBalance', options),
-    getBalances: (options) => cosmos('getBalances', options),
-    totalSupply: (options) => cosmos('totalSupply', {
       ...options
     }),
   },
